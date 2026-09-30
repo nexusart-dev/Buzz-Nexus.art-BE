@@ -52,7 +52,7 @@ const app = express();
 app.use(cors({ origin }));
 
 app.get("/", (_req, res) => {
-  res.json({ name: "Nexus.Art Buzz server", status: "ok", round, buzzed: entries.length });
+  res.json({ name: "Nexus.Art Pingo server", status: "ok", round, buzzed: entries.length });
 });
 app.get("/health", (_req, res) => {
   res.json({ status: "ok", uptime: process.uptime() });
@@ -185,6 +185,6 @@ io.on("connection", (socket) => {
 });
 
 httpServer.listen(PORT, () => {
-  console.log(`Nexus.Art Buzz server berjalan di port ${PORT}`);
+  console.log(`Nexus.Art Pingo server berjalan di port ${PORT}`);
   console.log(ADMIN_PIN ? "Panel host dilindungi PIN." : "Panel host TIDAK dilindungi PIN (set ADMIN_PIN untuk mengaktifkan).");
 });
