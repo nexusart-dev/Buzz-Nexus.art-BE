@@ -136,8 +136,8 @@ io.on("connection", (socket) => {
   socket.emit("me", { rank: rankOf(clientId) });
   if (socket.data.role === "player") broadcast();
 
-  // --- Pemain menekan buzzer -----------------------------------------
-  socket.on("buzz", (rawName: unknown, ack?: (result: BuzzResult) => void) => {
+  // --- Pemain menekan pingo -----------------------------------------
+  socket.on("ping", (rawName: unknown, ack?: (result: BuzzResult) => void) => {
     const reply = typeof ack === "function" ? ack : () => {};
     const name = cleanName(rawName);
 
@@ -179,7 +179,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    // Urutan buzz tetap tersimpan meskipun pemain terputus.
+    // Urutan ping tetap tersimpan meskipun pemain terputus.
     broadcast();
   });
 });
